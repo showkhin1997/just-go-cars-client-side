@@ -1,0 +1,24 @@
+.banner-bg{
+    margin-top: 4px;
+    background-color: rgba(235, 235, 235, 0.856);
+}
+.welcome-text{
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 70px;
+    font-size:4vw;
+}
+.site-name{
+    font-weight: 700;
+    font-size: 70px;
+    font-size:6vw;
+}
+.justgo-text{
+    color: rgb(55, 20, 184);
+}
+.primary-button{
+    background-color: rgb(41, 11, 147);
+    color: rgb(221, 221, 221);
+    font-weight: 700;
+    font-size: 18px;
+}
