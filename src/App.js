@@ -7,6 +7,7 @@ import {
 import Home from './Pages/Home/Home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/addproduct">
             <AddProduct></AddProduct>
+          </Route>
+          <Route path="*">
+            <NotFound></NotFound>
           </Route>
         </Switch>
       </Router>
