@@ -23,6 +23,7 @@ const Navigation = () => {
                     <Navbar.Collapse className="justify-content-center">
                         <Nav.Link to="/home#home" className="text-light">HOME</Nav.Link>
                         <Nav.Link to="/home#services" className="text-light ">CARS</Nav.Link>
+                        <Nav.Link to="/home#services" className="text-light ">Login</Nav.Link>
                         <Navbar.Text>
                             Signed in as: <a href="#login">korim</a>
                         </Navbar.Text>

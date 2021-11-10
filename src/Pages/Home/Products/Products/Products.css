@@ -1,0 +1,13 @@
+.header-text{
+    background-color: rgba(241, 241, 241, 0.952);
+    border-radius: 7px;
+    width: 70%;
+    margin: 0 auto;
+    line-height: 80px;
+    font-weight: 700;
+    margin-top: 80px;
+    color: rgb(55, 20, 184);
+    font-size: 40px;
+    font-size: 5vw;
+    padding: 5px;
+}

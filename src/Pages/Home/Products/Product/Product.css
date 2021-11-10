@@ -1,0 +1,9 @@
+.card-body-container{
+    box-shadow: 2px 5px 20px rgb(216, 216, 216);
+    border: none;
+    border-radius: 5px;
+}
+.card-body-container:hover{
+    box-shadow: 2px 5px 25px rgba(173, 173, 218, 0.904);
+    transition: 0.5s;
+}

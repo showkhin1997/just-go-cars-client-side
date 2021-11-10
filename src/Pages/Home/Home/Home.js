@@ -1,6 +1,8 @@
 import React from 'react';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Banner from '../Banner/Banner/Banner';
+import Products from '../Products/Products/Products';
+
 
 
 const Home = () => {
@@ -8,6 +10,7 @@ const Home = () => {
         <div>
             <Navigation></Navigation>
             <Banner></Banner>
+            <Products></Products>
         </div>
     );
 };

@@ -1,0 +1,15 @@
+.add-product{
+    margin-top: 80px;
+}
+
+.add-product form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-product form input, textarea{
+   width: 40%;
+   margin-bottom: 15px;
+}
