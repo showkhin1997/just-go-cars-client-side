@@ -1,0 +1,15 @@
+.login-form{
+    margin-top: 80px;
+}
+
+.login-form form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form form input, textarea{
+   width: 40%;
+   margin-bottom: 15px;
+}
