@@ -14,15 +14,25 @@ import Typography from '@mui/material/Typography';
 import useAuth from '../../../hooks/useAuth';
 import { Button, Nav } from 'react-bootstrap';
 import { HashLink } from 'react-router-hash-link';
-import MyOrders from '../MyOrders/MyOrders';
+import {
+    Switch,
+    Route,
+    Link,
+    useRouteMatch
+} from "react-router-dom";
+import MyOrders from '../MyOrders/MyOrders'
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import AddProduct from '../AddProduct/AddProduct';
+
 
 const drawerWidth = 200;
 
 function Dashboard(props) {
-    const { user, logOut } = useAuth();
+    const { user, logOut, admin } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
+    let { path, url } = useRouteMatch();
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
@@ -35,6 +45,19 @@ function Dashboard(props) {
                 <ListItem button>
                     <Nav.Link as={HashLink} to="/home#home" className="text-dark fw-bold">HOME</Nav.Link>
                 </ListItem>
+                <ListItem button>
+                    <Nav.Link as={Link} to={`${url}`} className="text-dark fw-bold">DASHBOARD</Nav.Link>
+                </ListItem>
+                {
+                    admin && <Box>
+                        <ListItem button>
+                            <Nav.Link as={Link} to={`${url}/makeadmin`} className="text-dark fw-bold">MAKE ADMIN</Nav.Link>
+                        </ListItem>
+                        <ListItem button>
+                            <Nav.Link as={Link} to={`${url}/addproduct`} className="text-dark fw-bold">ADD PRODUCT</Nav.Link>
+                        </ListItem>
+                    </Box>
+                }
                 <ListItem button>
                     {
                         user?.email && <Button onClick={logOut} variant="light" className="fw-bold">LOGOUT</Button>
@@ -109,9 +132,17 @@ function Dashboard(props) {
                     sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
                 >
                     <Toolbar />
-                    <Typography paragraph>
-                        <MyOrders></MyOrders>
-                    </Typography>
+                    <Switch>
+                        <Route exact path={path}>
+                            <MyOrders></MyOrders>
+                        </Route>
+                        <Route path={`${path}/addproduct`}>
+                            <AddProduct></AddProduct>
+                        </Route>
+                        <Route path={`${path}/makeadmin`}>
+                            <MakeAdmin></MakeAdmin>
+                        </Route>
+                    </Switch>
                 </Box>
             </Box>
         </>

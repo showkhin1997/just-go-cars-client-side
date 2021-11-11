@@ -6,7 +6,6 @@ import './Login.css';
 import useAuth from '../../../hooks/useAuth';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
-import Navigation from '../../Shared/Navigation/Navigation';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
@@ -33,7 +32,6 @@ const Login = () => {
 
     return (
         <Box>
-            <Navigation></Navigation>
             <h2 className="text-center mt-5">Login</h2>
             <Container maxWidth="sm">
                 <Box sx={{ m: 4 }}>
