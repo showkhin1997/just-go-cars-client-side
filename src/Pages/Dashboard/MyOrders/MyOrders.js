@@ -13,7 +13,7 @@ const MyOrders = () => {
     }, [])
 
     const handleDelete = id => {
-        const procced = window.confirm('Are you  you want to delete the Order?');
+        const procced = window.confirm('Are you  you want to delete the Product?');
         if (procced) {
             const url = `http://localhost:5000/order/${id}`;
             fetch(url, {
@@ -30,12 +30,12 @@ const MyOrders = () => {
     }
 
     return (
-        <div>
-            <h2>My Cart</h2>
-            <Table striped bordered hover responsive="sm">
+        <div className="container">
+            <h2 className="text-center mt-5 mb-4">My Orders</h2>
+            <Table striped bordered hover responsive>
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Buyer</th>
                         <th>Email</th>
                         <th>Car</th>
                         <th>Price</th>

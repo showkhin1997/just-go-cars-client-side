@@ -23,6 +23,8 @@ import {
 import MyOrders from '../MyOrders/MyOrders'
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddProduct from '../AddProduct/AddProduct';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import ManageProducts from '../ManageProducts/ManageProducts';
 
 
 const drawerWidth = 200;
@@ -43,6 +45,11 @@ function Dashboard(props) {
             <Divider />
             <List>
                 <ListItem button>
+                    {
+                        user?.email && <h6>{user.displayName}</h6>
+                    }
+                </ListItem>
+                <ListItem button>
                     <Nav.Link as={HashLink} to="/home#home" className="text-dark fw-bold">HOME</Nav.Link>
                 </ListItem>
                 <ListItem button>
@@ -52,6 +59,9 @@ function Dashboard(props) {
                     admin && <Box>
                         <ListItem button>
                             <Nav.Link as={Link} to={`${url}/makeadmin`} className="text-dark fw-bold">MAKE ADMIN</Nav.Link>
+                        </ListItem>
+                        <ListItem button>
+                            <Nav.Link as={Link} to={`${url}/manageproducts`} className="text-dark fw-bold">MANAGE PRODUCTS</Nav.Link>
                         </ListItem>
                         <ListItem button>
                             <Nav.Link as={Link} to={`${url}/addproduct`} className="text-dark fw-bold">ADD PRODUCT</Nav.Link>
@@ -136,12 +146,15 @@ function Dashboard(props) {
                         <Route exact path={path}>
                             <MyOrders></MyOrders>
                         </Route>
-                        <Route path={`${path}/addproduct`}>
+                        <AdminRoute path={`${path}/addproduct`}>
                             <AddProduct></AddProduct>
-                        </Route>
-                        <Route path={`${path}/makeadmin`}>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manageproducts`}>
+                            <ManageProducts></ManageProducts>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/makeadmin`}>
                             <MakeAdmin></MakeAdmin>
-                        </Route>
+                        </AdminRoute>
                     </Switch>
                 </Box>
             </Box>
