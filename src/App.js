@@ -13,6 +13,7 @@ import Register from './Pages/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import ConfirmOrder from './Pages/ConfirmOrder/ConfirmOrder/ConfirmOrder';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
             </Route>
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/confirmorder/:productId">
+              <ConfirmOrder></ConfirmOrder>
             </PrivateRoute>
             <Route path="/login">
               <Login></Login>

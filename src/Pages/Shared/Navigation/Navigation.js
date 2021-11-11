@@ -30,12 +30,12 @@ const Navigation = () => {
                         </Navbar.Text>
                         <Nav.Link as={HashLink} to="/home#home" className="text-light">HOME</Nav.Link>
                         <Nav.Link as={HashLink} to="/home#cars" className="text-light ">CARS</Nav.Link>
-                        <Nav.Link as={Link} to="/dashboard" className="text-light ">Dashboard</Nav.Link>
+                        <Nav.Link as={Link} to="/dashboard" className="text-light ">DASBOARD</Nav.Link>
                         {
-                            user?.email ? <Button onClick={logOut} variant="light" className="ms-2">Logout</Button>
+                            user?.email ? <Button onClick={logOut} variant="light" className="ms-2 fw-bold">Logout</Button>
                                 :
                                 <Link to="/login">
-                                    <button type="button" className="btn btn-warning primary-button">LOGIN</button>
+                                    <button type="button" className="btn btn-warning primary-button fw-bold">Login</button>
                                 </Link>
                         }
                     </Navbar.Collapse>
