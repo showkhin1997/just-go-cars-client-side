@@ -14,6 +14,8 @@ import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import ConfirmOrder from './Pages/ConfirmOrder/ConfirmOrder/ConfirmOrder';
+import MoreProducts from './Pages/MoreProducts/MoreProducts/MoreProducts';
+import MoreConfirmOrder from './Pages/MoreProducts/MoreConfirmOrder/MoreConfirmOrder';
 
 function App() {
   return (
@@ -30,11 +32,17 @@ function App() {
             <Route path="/addproduct">
               <AddProduct></AddProduct>
             </Route>
+            <Route path="/moreproducts">
+              <MoreProducts></MoreProducts>
+            </Route>
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>
             <PrivateRoute path="/confirmorder/:productId">
               <ConfirmOrder></ConfirmOrder>
+            </PrivateRoute>
+            <PrivateRoute path="/moreconfirmorder/:productId">
+              <MoreConfirmOrder></MoreConfirmOrder>
             </PrivateRoute>
             <Route path="/login">
               <Login></Login>
