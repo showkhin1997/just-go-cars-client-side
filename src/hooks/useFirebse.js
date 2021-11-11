@@ -1,5 +1,5 @@
 import initializeFirebase from "../Pages/Login/Firebase/firebase.init";
-import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged, updateProfile, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 // initializeFirebase App
@@ -11,6 +11,7 @@ const useFirebase = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const auth = getAuth();
+    const googleProvider = new GoogleAuthProvider();
 
     const registerUser = (email, password, name, history) => {
         setIsLoading(true);
@@ -19,6 +20,7 @@ const useFirebase = () => {
                 setAuthError('');
                 const newUser = { email, displayName: name };
                 setUser(newUser);
+                saveUser(email, name);
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
@@ -43,6 +45,21 @@ const useFirebase = () => {
             })
             .catch((error) => {
                 setAuthError(error.message);
+            })
+            .finally(() => setIsLoading(false));
+    }
+
+    const signInWithGoogle = (location, history) => {
+        setIsLoading(true);
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
+                saveUser(user.email, user.displayName, 'PUT');
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+                setAuthError('');
+            }).catch((error) => {
+                setAuthError('');
             })
             .finally(() => setIsLoading(false));
     }
@@ -73,13 +90,26 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
+    const saveUser = (email, displayName) => {
+        const user = { email, displayName };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
+
     return {
         registerUser,
         user,
         logOut,
         loginUser,
         authError,
-        isLoading
+        isLoading,
+        signInWithGoogle
     }
 
 }

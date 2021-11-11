@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { CircularProgress, Container } from '@mui/material';
+import { CircularProgress, Container, Button } from '@mui/material';
 import './Login.css';
 import useAuth from '../../../hooks/useAuth';
 import { Link, useLocation, useHistory } from 'react-router-dom';
@@ -10,7 +10,7 @@ import Navigation from '../../Shared/Navigation/Navigation';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const { loginUser, isLoading, user, authError } = useAuth();
+    const { loginUser, isLoading, user, authError, signInWithGoogle } = useAuth();
     const location = useLocation();
     const history = useHistory();
 
@@ -25,6 +25,10 @@ const Login = () => {
     const handleLoginSubmit = e => {
         loginUser(loginData.email, loginData.password, location, history);
         e.preventDefault();
+    }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, history);
     }
 
     return (
@@ -58,6 +62,7 @@ const Login = () => {
                             />
                             <br />
                             <button type="submit" className="btn btn-warning primary-button fw-bold mt-4">Login</button>
+                            <button onClick={handleGoogleSignIn} type="button" className="btn btn-primary fw-bold mt-4 ms-2">Google Sign In</button>
                             <br />
                             <Link to="/register">
                                 <button type="button" className="btn btn-link">New User? Please Register</button>
