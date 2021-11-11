@@ -13,7 +13,7 @@ const Products = () => {
     }, [])
 
     return (
-        <div className="mb-5 mt-5">
+        <div className="mb-5 mt-5" id="cars">
             <h2 className="text-center mb-5 header-text">Choose Your Car</h2>
             <Row xs={1} md={3} className="g-4 container mx-auto">
                 {

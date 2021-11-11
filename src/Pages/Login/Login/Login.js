@@ -4,12 +4,15 @@ import TextField from '@mui/material/TextField';
 import { CircularProgress, Container } from '@mui/material';
 import './Login.css';
 import useAuth from '../../../hooks/useAuth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
+import Navigation from '../../Shared/Navigation/Navigation';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
     const { loginUser, isLoading, user, authError } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -20,12 +23,13 @@ const Login = () => {
     }
 
     const handleLoginSubmit = e => {
-        loginUser(loginData.email, loginData.password);
+        loginUser(loginData.email, loginData.password, location, history);
         e.preventDefault();
     }
 
     return (
         <Box>
+            <Navigation></Navigation>
             <h2 className="text-center mt-5">Login</h2>
             <Container maxWidth="sm">
                 <Box sx={{ m: 4 }}>
