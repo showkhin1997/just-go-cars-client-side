@@ -3,12 +3,13 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Alert, CircularProgress, Container } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 const Register = () => {
     const [registerData, setRegisterData] = useState({});
     const { registerUser, isLoading, user, authError } = useAuth();
+    const history = useHistory();
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -23,7 +24,7 @@ const Register = () => {
             alert('password did not matched');
             return;
         }
-        registerUser(registerData.email, registerData.password, registerData.name)
+        registerUser(registerData.email, registerData.password, registerData.name, history)
         e.preventDefault();
     }
 

@@ -25,9 +25,12 @@ const Navigation = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-center">
-                        <Navbar.Text className="ms-5 me-5">
-                            <span className="text-white"> Welcome:</span> <small className="text-white fw-bold fs-5 ms-2">{user?.email}</small>
-                        </Navbar.Text>
+                        {
+                            user.email &&
+                            <Navbar.Text className="ms-5 me-5">
+                                <span className="text-white"> Welcome </span> <small className="text-white fw-bold fs-5 ms-2">{user?.displayName}</small>
+                            </Navbar.Text>
+                        }
                         <Nav.Link as={HashLink} to="/home#home" className="text-light">HOME</Nav.Link>
                         <Nav.Link as={HashLink} to="/home#cars" className="text-light ">CARS</Nav.Link>
                         <Nav.Link as={Link} to="/dashboard" className="text-light ">DASBOARD</Nav.Link>

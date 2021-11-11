@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -18,11 +18,41 @@ const style = {
     p: 4,
 };
 
-const ConfirmOrderModal = ({ open, handleClose, product }) => {
+const ConfirmOrderModal = ({ open, handleClose, product, setOrderSuccess }) => {
+    const { productName, price, manufacturer } = product
     const { user } = useAuth();
+    const initialInfo = { buyerName: user.displayName, email: user.email, phone: '', address: '' };
+    const [purchesInfo, setPurchesInfo] = useState(initialInfo);
+
+    const handleOnBlur = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newInfo = { ...purchesInfo };
+        newInfo[field] = value;
+        setPurchesInfo(newInfo);
+    }
 
     const handleOnConfirmOrder = e => {
-        alert('Order Processing for Delivary')
+        const confirmOrder = {
+            ...purchesInfo,
+            productName: productName,
+            brand: manufacturer,
+            price: price,
+        }
+        fetch('http://localhost:5000/order', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(confirmOrder)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    setOrderSuccess(true)
+                    handleClose();
+                }
+            })
         e.preventDefault()
     }
 
@@ -43,7 +73,15 @@ const ConfirmOrderModal = ({ open, handleClose, product }) => {
                         disabled
                         label="Car Name"
                         id="outlined-size-small"
-                        defaultValue={product?.productName}
+                        defaultValue={productName}
+                        size="small"
+                    />
+                    <TextField
+                        sx={{ width: '90%', m: 1 }}
+                        disabled
+                        label="Brand"
+                        id="outlined-size-small"
+                        defaultValue={manufacturer}
                         size="small"
                     />
                     <TextField
@@ -51,7 +89,16 @@ const ConfirmOrderModal = ({ open, handleClose, product }) => {
                         disabled
                         label="Price$"
                         id="outlined-size-small"
-                        defaultValue={product?.price}
+                        defaultValue={price}
+                        size="small"
+                    />
+                    <TextField
+                        sx={{ width: '90%', m: 1 }}
+                        label="Your Name"
+                        id="outlined-size-small"
+                        defaultValue={user?.displayName}
+                        name="buyerName"
+                        onBlur={handleOnBlur}
                         size="small"
                     />
                     <TextField
@@ -59,13 +106,8 @@ const ConfirmOrderModal = ({ open, handleClose, product }) => {
                         label="Email"
                         id="outlined-size-small"
                         defaultValue={user?.email}
-                        size="small"
-                    />
-                    <TextField
-                        sx={{ width: '90%', m: 1 }}
-                        label="Your Name"
-                        id="outlined-size-small"
-                        defaultValue=""
+                        name="email"
+                        onBlur={handleOnBlur}
                         size="small"
                     />
                     <TextField
@@ -73,6 +115,8 @@ const ConfirmOrderModal = ({ open, handleClose, product }) => {
                         label="Phone"
                         id="outlined-size-small"
                         defaultValue=""
+                        name="phone"
+                        onBlur={handleOnBlur}
                         size="small"
                     />
                     <TextField
@@ -80,9 +124,11 @@ const ConfirmOrderModal = ({ open, handleClose, product }) => {
                         label="Address"
                         id="outlined-size-small"
                         defaultValue=""
+                        name="address"
+                        onBlur={handleOnBlur}
                         size="small"
                     />
-                    <Button type="submit" className="btn btn-warning primary-button fw-bold m-2">Confirm Order</Button>
+                    <Button type="submit" className="btn btn-warning primary-button fw-bold m-2">PURCHES</Button>
                 </form>
             </Box>
         </Modal>
