@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { CircularProgress, Container, Button } from '@mui/material';
+import { CircularProgress, Container } from '@mui/material';
 import './Login.css';
 import useAuth from '../../../hooks/useAuth';
 import { Link, useLocation, useHistory } from 'react-router-dom';
