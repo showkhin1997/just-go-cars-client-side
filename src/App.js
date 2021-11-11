@@ -11,11 +11,11 @@ import NotFound from './Pages/NotFound/NotFound';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
-import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import ConfirmOrder from './Pages/ConfirmOrder/ConfirmOrder/ConfirmOrder';
 import MoreProducts from './Pages/MoreProducts/MoreProducts/MoreProducts';
 import MoreConfirmOrder from './Pages/MoreProducts/MoreConfirmOrder/MoreConfirmOrder';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
