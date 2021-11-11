@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Container } from '@mui/material';
+import { CircularProgress, Container } from '@mui/material';
 import './Login.css';
 import useAuth from '../../../hooks/useAuth';
+import { Link } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const { loginUser } = useAuth();
+    const { loginUser, isLoading, user, authError } = useAuth();
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -19,7 +21,7 @@ const Login = () => {
 
     const handleLoginSubmit = e => {
         loginUser(loginData.email, loginData.password);
-        e.PreventDefault();
+        e.preventDefault();
     }
 
     return (
@@ -27,29 +29,38 @@ const Login = () => {
             <h2 className="text-center mt-5">Login</h2>
             <Container maxWidth="sm">
                 <Box sx={{ m: 4 }}>
-                    <form onSubmit={handleLoginSubmit}>
-                        <TextField
-                            sx={{ width: '80%', mt: 2 }}
-                            id="outlined-basic"
-                            variant="outlined"
-                            label="Email"
-                            name="email"
-                            type="email"
-                            onBlur={handleOnBlur}
-                        />
-                        <br />
-                        <TextField
-                            sx={{ width: '80%', mt: 2 }}
-                            id="outlined-basic"
-                            variant="outlined"
-                            label="Password"
-                            name="password"
-                            type="password"
-                            onBlur={handleOnBlur}
-                        />
-                        <br />
-                        <button type="submit" className="btn btn-warning primary-button fw-bold mt-4">Login</button>
-                    </form>
+                    {user?.email && <Alert severity="success">Login Successfully!</Alert>}
+                    {authError && <Alert severity="error">{authError}</Alert>}
+                    {!isLoading &&
+                        <form onSubmit={handleLoginSubmit}>
+                            <TextField
+                                sx={{ width: '80%', mt: 2 }}
+                                id="outlined-basic"
+                                variant="outlined"
+                                label="Email"
+                                name="email"
+                                type="email"
+                                onBlur={handleOnBlur}
+                            />
+                            <br />
+                            <TextField
+                                sx={{ width: '80%', mt: 2 }}
+                                id="outlined-basic"
+                                variant="outlined"
+                                label="Password"
+                                name="password"
+                                type="password"
+                                onBlur={handleOnBlur}
+                            />
+                            <br />
+                            <button type="submit" className="btn btn-warning primary-button fw-bold mt-4">Login</button>
+                            <br />
+                            <Link to="/register">
+                                <button type="button" className="btn btn-link">New User? Please Register</button>
+                            </Link>
+                        </form>
+                    }
+                    {isLoading && <CircularProgress />}
                 </Box>
             </Container>
         </Box>

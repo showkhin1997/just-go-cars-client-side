@@ -8,21 +8,25 @@ initializeFirebase();
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [authError, setAuthError] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
+
     const auth = getAuth();
 
     const registerUser = (email, password, name) => {
+        setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((user) => {
-                const newUser = { email, displayName: name }
-                setUser(newUser);
+                setAuthError('');
             })
             .catch((error) => {
                 setAuthError(error.message);
 
             })
+            .finally(() => setIsLoading(false));
     }
 
     const loginUser = (email, password) => {
+        setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setAuthError('');
@@ -30,6 +34,7 @@ const useFirebase = () => {
             .catch((error) => {
                 setAuthError(error.message);
             })
+            .finally(() => setIsLoading(false));
     }
 
     // observe user  satate
@@ -40,6 +45,7 @@ const useFirebase = () => {
             } else {
                 setUser({});
             }
+            setIsLoading(false);
         });
 
         return () => unsubscribe;
@@ -47,19 +53,23 @@ const useFirebase = () => {
     }, [auth])
 
     const logOut = () => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
-        })
-            .catch((error) => {
-                // An error happened.
+        setIsLoading(true);
+        signOut(auth)
+            .then(() => {
             })
+            .catch(error => {
+                setAuthError('');
+            })
+            .finally(() => setIsLoading(false));
     }
 
     return {
         registerUser,
         user,
         logOut,
-        loginUser
+        loginUser,
+        authError,
+        isLoading
     }
 
 }

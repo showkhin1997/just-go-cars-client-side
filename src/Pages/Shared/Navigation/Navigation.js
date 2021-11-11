@@ -7,7 +7,7 @@ import './Navigation.css';
 
 
 const Navigation = () => {
-    const { user, logout } = useAuth();
+    const { user, logOut } = useAuth();
     return (
         <>
             <Navbar sticky="top" className="navbar-bg" variant="dark" collapseOnSelect expand="lg">
@@ -24,17 +24,18 @@ const Navigation = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-center">
+                        <Navbar.Text className="ms-5 me-5">
+                            <span className="text-white"> Welcome:</span> <small className="text-white fw-bold fs-5 ms-2">{user?.email}</small>
+                        </Navbar.Text>
                         <Nav.Link to="/home#home" className="text-light">HOME</Nav.Link>
                         <Nav.Link to="/home#services" className="text-light ">CARS</Nav.Link>
                         {
-                            user?.email ? <Button onClick={logout} variant="light" className="ms-2">Logout</Button> :
-                                <Link to="login">
+                            user?.email ? <Button onClick={logOut} variant="light" className="ms-2">Logout</Button>
+                                :
+                                <Link to="/login">
                                     <button type="button" className="btn btn-warning primary-button">LOGIN</button>
                                 </Link>
                         }
-                        <Navbar.Text className="ms-5">
-                            <span className="text-white"> Welcome:</span> <small className="text-white fw-bold fs-5 ms-2">{user?.email}</small>
-                        </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
