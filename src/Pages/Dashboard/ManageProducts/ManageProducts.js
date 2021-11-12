@@ -4,14 +4,14 @@ import { Table, Button } from 'react-bootstrap';
 const ManageProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/moreProducts')
+        fetch('https://intense-cliffs-24776.herokuapp.com/moreProducts')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
     const handleDelete = id => {
         const procced = window.confirm('Are you  you want to delete the Order?');
         if (procced) {
-            const url = `http://localhost:5000/moreProducts/${id}`;
+            const url = `https://intense-cliffs-24776.herokuapp.com/moreProducts/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

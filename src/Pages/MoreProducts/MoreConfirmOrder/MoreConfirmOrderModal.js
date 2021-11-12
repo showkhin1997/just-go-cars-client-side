@@ -40,7 +40,7 @@ const MoreConfirmOrderModal = ({ open, handleClose, moreProduct, setOrderSuccess
             brand: manufacturer,
             price: price,
         }
-        fetch('http://localhost:5000/order', {
+        fetch('https://intense-cliffs-24776.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

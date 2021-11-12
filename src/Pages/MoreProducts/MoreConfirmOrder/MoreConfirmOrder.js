@@ -16,7 +16,7 @@ const MoreConfirmOrder = () => {
     const [orderSuccess, setOrderSuccess] = useState(false);
 
     useEffect(() => {
-        const url = `http://localhost:5000/moreProducts/${productId}`;
+        const url = `https://intense-cliffs-24776.herokuapp.com/moreProducts/${productId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setMoreProduct(data))
