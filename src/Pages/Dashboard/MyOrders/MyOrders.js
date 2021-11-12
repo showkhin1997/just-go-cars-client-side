@@ -48,7 +48,6 @@ const MyOrders = () => {
                                 key={order._id}
                             >
                                 <td>{order.buyerName}</td>
-                                <td>{order.email}</td>
                                 <td>{order.productName}</td>
                                 <td>{order.price}</td>
                                 <Button onClick={() => handleDelete(order._id)} variant="danger text-dark fw-bold">Delete</Button>

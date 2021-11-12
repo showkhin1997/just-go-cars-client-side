@@ -9,7 +9,7 @@ const ManageProducts = () => {
             .then(data => setProducts(data))
     }, [])
     const handleDelete = id => {
-        const procced = window.confirm('Are you  you want to delete the Order?');
+        const procced = window.confirm('Are you want to delete the Order?');
         if (procced) {
             const url = `https://intense-cliffs-24776.herokuapp.com/moreProducts/${id}`;
             fetch(url, {

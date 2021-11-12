@@ -7,6 +7,7 @@ import Navigation from '../../Shared/Navigation/Navigation';
 import ConfirmOrderModal from '../ConfirmOrderModal/ConfirmOrderModal';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import Footer from '../../Shared/Footer/Footer';
 
 const ConfirmOrder = () => {
     const [product, setProduct] = useState({});
@@ -27,8 +28,8 @@ const ConfirmOrder = () => {
             <div>
                 <Navigation></Navigation>
                 {orderSuccess && <Alert severity="success" sx={{ m: 3 }}>Purchess Successfully!</Alert>}
-                <div className="container mt-5 p-2">
-                    <Card style={{ width: '28rem' }} className="border-0">
+                <div className="container mt-5 ">
+                    <Card style={{ width: '20rem' }} className="border-0">
                         <Card.Img variant="top" src={product?.img} />
                         <Card.Body>
                             <Card.Title>{product?.productName}</Card.Title>
@@ -43,11 +44,12 @@ const ConfirmOrder = () => {
                             </Card.Text>
                             <Button onClick={handleOpen} className="btn btn-warning primary-button fw-bold">Place Order</Button>
                             <Link as={HashLink} to="/home#cars">
-                                <button type="button" className="btn btn-light fw-bold">Back</button>
+                                <button type="button" className="btn btn-light fw-bold ms-1">Back</button>
                             </Link>
                         </Card.Body>
                     </Card>
                 </div>
+                <Footer></Footer>
             </div>
             <ConfirmOrderModal
                 product={product}
