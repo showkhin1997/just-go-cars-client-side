@@ -38,44 +38,6 @@ const DashboardHome = () => {
                 <input type="submit" className="btn btn-warning primary-button" />
             </form>
         </div>
-
-        // <Box>
-        //     <h2 className="text-center mt-5 mb-4">WELCOME TO DASHBOARD</h2>
-        //     <h5 className="mt-5 mb-2">Give Your Feedback Please....</h5>
-        //     <Container maxWidth="sm">
-        //         <Box sx={{ m: 4 }}>
-        //             <form onSubmit={handleReviewSubmit}>
-        //                 <TextField
-        //                     sx={{ width: '80%', mt: 2 }}
-        //                     variant="outlined"
-        //                     label="Email"
-        //                     name="email"
-        //                     type="email"
-        //                     onBlur={handleOnBlur}
-        //                 />
-        //                 <TextField
-        //                     sx={{ width: '80%', mt: 2 }}
-        //                     variant="outlined"
-        //                     label="Feedback"
-        //                     name="feedback"
-        //                     type="text"
-        //                     onBlur={handleOnBlur}
-        //                 />
-        //                 <br />
-        //                 <TextField
-        //                     sx={{ width: '80%', mt: 2 }}
-        //                     variant="outlined"
-        //                     label="Rating(0 to 5)"
-        //                     name="rating"
-        //                     type="rating"
-        //                     onBlur={handleOnBlur}
-        //                 />
-        //                 <br />
-        //                 <button type="submit" className="btn btn-warning primary-button fw-bold mt-4">Submit</button>
-        //             </form>
-        //         </Box>
-        //     </Container>
-        // </Box>
     );
 };
 
