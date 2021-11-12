@@ -6,6 +6,8 @@ import './Login.css';
 import useAuth from '../../../hooks/useAuth';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
+import Navigation from '../../Shared/Navigation/Navigation';
+import Footer from '../../Shared/Footer/Footer';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
@@ -32,6 +34,7 @@ const Login = () => {
 
     return (
         <Box>
+            <Navigation></Navigation>
             <h2 className="text-center mt-5">Login</h2>
             <Container maxWidth="sm">
                 <Box sx={{ m: 4 }}>
@@ -70,6 +73,7 @@ const Login = () => {
                     {isLoading && <CircularProgress />}
                 </Box>
             </Container>
+            <Footer></Footer>
         </Box>
     );
 };

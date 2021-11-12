@@ -5,6 +5,8 @@ import { Alert, CircularProgress, Container } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
 import { Link, useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import Footer from '../../Shared/Footer/Footer';
+import Navigation from '../../Shared/Navigation/Navigation';
 
 const Register = () => {
     const [registerData, setRegisterData] = useState({});
@@ -30,6 +32,7 @@ const Register = () => {
 
     return (
         <Box>
+            <Navigation></Navigation>
             <h2 className="text-center mt-5">Register</h2>
             <Container maxWidth="sm">
                 <Box sx={{ m: 4 }}>
@@ -86,6 +89,7 @@ const Register = () => {
                     {isLoading && <CircularProgress />}
                 </Box>
             </Container>
+            <Footer></Footer>
         </Box>
     );
 };

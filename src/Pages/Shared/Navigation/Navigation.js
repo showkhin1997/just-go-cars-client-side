@@ -33,6 +33,8 @@ const Navigation = () => {
                         }
                         <Nav.Link as={HashLink} to="/home#home" className="text-light">HOME</Nav.Link>
                         <Nav.Link as={HashLink} to="/home#cars" className="text-light ">CARS</Nav.Link>
+                        <Nav.Link as={HashLink} to="/home#contuctus" className="text-light ">CONTUCT US</Nav.Link>
+                        <Nav.Link as={HashLink} to="/home#bestdeal" className="text-light ">BEST DEALS</Nav.Link>
                         <Nav.Link as={Link} to="/dashboard" className="text-light ">DASBOARD</Nav.Link>
                         {
                             user?.email ? <Button onClick={logOut} variant="light" className="ms-2 fw-bold">Logout</Button>

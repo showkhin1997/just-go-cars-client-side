@@ -27,6 +27,7 @@ import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import ManageProducts from '../ManageProducts/ManageProducts';
 import PayMethod from '../PayMethod/PayMethod';
 import DashboardHome from '../DashboardHome/DashboardHome';
+import ManageAllOrders from '../ManageAllOrders/ManageAllOrders';
 
 
 const drawerWidth = 200;
@@ -74,6 +75,9 @@ function Dashboard(props) {
                         </ListItem>
                         <ListItem button>
                             <Nav.Link as={Link} to={`${url}/manageproducts`} className="text-dark fw-bold">MANAGE PRODUCTS</Nav.Link>
+                        </ListItem>
+                        <ListItem button>
+                            <Nav.Link as={Link} to={`${url}/manageallorders`} className="text-dark fw-bold">MANAGE All ORDERS</Nav.Link>
                         </ListItem>
                         <ListItem button>
                             <Nav.Link as={Link} to={`${url}/addproduct`} className="text-dark fw-bold">ADD PRODUCT</Nav.Link>
@@ -169,6 +173,9 @@ function Dashboard(props) {
                         </AdminRoute>
                         <AdminRoute path={`${path}/manageproducts`}>
                             <ManageProducts></ManageProducts>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manageallorders`}>
+                            <ManageAllOrders></ManageAllOrders>
                         </AdminRoute>
                         <AdminRoute path={`${path}/makeadmin`}>
                             <MakeAdmin></MakeAdmin>
