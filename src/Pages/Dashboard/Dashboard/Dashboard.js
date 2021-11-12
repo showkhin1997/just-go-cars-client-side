@@ -25,6 +25,8 @@ import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddProduct from '../AddProduct/AddProduct';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import ManageProducts from '../ManageProducts/ManageProducts';
+import PayMethod from '../PayMethod/PayMethod';
+import DashboardHome from '../DashboardHome/DashboardHome';
 
 
 const drawerWidth = 200;
@@ -55,6 +57,16 @@ function Dashboard(props) {
                 <ListItem button>
                     <Nav.Link as={Link} to={`${url}`} className="text-dark fw-bold">DASHBOARD</Nav.Link>
                 </ListItem>
+                {
+                    !admin && <Box>
+                        <ListItem button>
+                            <Nav.Link as={Link} to={`${url}/myorders`} className="text-dark fw-bold">MY ORDERS</Nav.Link>
+                        </ListItem>
+                        <ListItem button>
+                            <Nav.Link as={Link} to={`${url}/paymethod`} className="text-dark fw-bold">PAY METHOD</Nav.Link>
+                        </ListItem>
+                    </Box>
+                }
                 {
                     admin && <Box>
                         <ListItem button>
@@ -144,7 +156,13 @@ function Dashboard(props) {
                     <Toolbar />
                     <Switch>
                         <Route exact path={path}>
+                            <DashboardHome></DashboardHome>
+                        </Route>
+                        <Route path={`${path}/myorders`}>
                             <MyOrders></MyOrders>
+                        </Route>
+                        <Route path={`${path}/paymethod`}>
+                            <PayMethod></PayMethod>
                         </Route>
                         <AdminRoute path={`${path}/addproduct`}>
                             <AddProduct></AddProduct>
