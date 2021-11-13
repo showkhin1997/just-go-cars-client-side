@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
+import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import MoreProduct from '../MoreProduct/MoreProduct';
 
@@ -22,6 +23,7 @@ const MoreProducts = () => {
                     ></MoreProduct>)
                 }
             </Row>
+            <Footer></Footer>
         </div>
     );
 };
